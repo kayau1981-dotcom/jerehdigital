@@ -1,0 +1,6 @@
+{
+  "name": "Silsilah Keluarga Dashboard",
+  "description": "Dashboard silsilah keluarga interaktif yang terhubung langsung dengan Google Sheets (CSV) dengan tampilan visual pohon keluarga, album foto, statistik demografi, dan daftar anggota.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

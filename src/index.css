@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+/* 
+ * Global Eye-Safe Dark Mode Theme (Midnight Slate)
+ * Safely overrides common layout colors and utilities when the .dark class is active.
+ */
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Baselines */
+.dark,
+.dark body {
+  background-color: #0d111d !important;
+  color: #e2e8f0 !important;
+}
+
+/* Background overrides */
+.dark .bg-slate-50,
+.dark .bg-slate-50\/50,
+.dark .bg-slate-50\/30,
+.dark main {
+  background-color: #0d111d !important;
+}
+
+.dark header,
+.dark .bg-white {
+  background-color: #161b26 !important;
+  border-color: #212836 !important;
+}
+
+.dark .bg-slate-100 {
+  background-color: #212836 !important;
+}
+
+.dark .bg-slate-200,
+.dark .bg-slate-150 {
+  background-color: #2c3547 !important;
+}
+
+.dark .bg-slate-950\/45 {
+  background-color: #05070c !important;
+}
+
+/* Table elements */
+.dark table {
+  background-color: #161b26 !important;
+}
+
+.dark td,
+.dark th {
+  border-color: #212836 !important;
+}
+
+.dark table th {
+  background-color: #1f2635 !important;
+  color: #f8fafc !important;
+}
+
+.dark .hover\:bg-slate-50:hover {
+  background-color: #1f2635 !important;
+}
+
+/* Borders */
+.dark .border-slate-50,
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-200\/80,
+.dark .divide-slate-100 > * {
+  border-color: #212836 !important;
+}
+
+/* Text overrides */
+.dark .text-slate-800,
+.dark .text-slate-900,
+.dark .text-slate-700 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Elements resetting */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f8fafc !important;
+}
+
+.dark p,
+.dark span:not(.text-white),
+.dark label:not(.text-white) {
+  color: #cbd5e1;
+}
+
+/* Specific floating windows / modals / cards */
+.dark .shadow-xl,
+.dark .shadow-2xl,
+.dark .bg-white.rounded-3xl,
+.dark .bg-white.rounded-2xl {
+  background-color: #161b26 !important;
+  border-color: #212836 !important;
+}
+
+/* Inputs and Interactive select dropdowns */
+.dark input[type="text"],
+.dark input[type="date"],
+.dark select,
+.dark textarea {
+  background-color: #1a202c !important;
+  color: #ffffff !important;
+  border-color: #2d3748 !important;
+}
+
+.dark input::placeholder {
+  color: #4b5563 !important;
+}
+
+.dark #global-search-container .bg-white {
+  background-color: #161b26 !important;
+}
+
+/* Quick stats cards styling */
+.dark .bg-sky-50,
+.dark .bg-cyan-50 {
+  background-color: rgba(14, 165, 233, 0.08) !important;
+}
+.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+}
+.dark .bg-rose-50 {
+  background-color: rgba(244, 63, 94, 0.08) !important;
+}
+.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+}
+.dark .bg-purple-50 {
+  background-color: rgba(168, 85, 247, 0.08) !important;
+}
+
+/* Chart items styling overrides for Recharts when theme is dark */
+.dark .recharts-default-tooltip {
+  background-color: #161b26 !important;
+  border-color: #212836 !important;
+}
+
+/* Tree layouts overrides container bg */
+.dark #family-tree-svg-container {
+  background-color: #0d111d !important;
+}
+
+/* Custom Slideshow & Transitions Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progressWidth {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-progress {
+  animation: progressWidth 4.5s linear infinite;
+}
+
+/* 
+ * Professional A4 Print Optimization Media Queries
+ * Hides control elements (sidebar, header, buttons) and scales family tree/lists to fit paper cleanly.
+ */
+@media print {
+  /* Hide interface controls and auxiliary widgets to save ink and paper */
+  aside,
+  header,
+  button,
+  input,
+  select,
+  textarea,
+  iframe,
+  .no-print,
+  #google-maps-setup-card,
+  #google-maps-geo-card,
+  #global-search-container,
+  #automatic-birthday-reminder,
+  [role="dialog"],
+  .modal-overlay,
+  .mobile-close-trigger {
+    display: none !important;
+  }
+
+  /* Reset document defaults for white paper printing */
+  html, 
+  body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    font-family: "Inter", -apple-system, system-ui, sans-serif !important;
+  }
+
+  /* Break down multi-column layouts into full-width static blocks */
+  main,
+  .flex-1,
+  .flex,
+  .grid,
+  .max-w-7xl,
+  #family-tree-map-canvas-parent {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  /* Page layout config */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  /* Optimize family tree layout container for high fidelity SVG prints */
+  #family-tree-svg-container,
+  svg {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 500px !important;
+    overflow: visible !important;
+    transform: none !important; /* resets dynamic panning/zoom so it maps strictly inside page borders */
+    background: #ffffff !important;
+    border: none !important;
+  }
+
+  /* Force highly legible text colors on white paper */
+  text,
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  th,
+  td {
+    color: #000000 !important;
+    fill: #000000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* Ensure node connector borders and spouses links print cleanly */
+  path {
+    transition: none !important;
+  }
+
+  /* Optimize member directory (DaftarAnggotaView) table spacing and column rendering */
+  table {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+    background: #ffffff !important;
+    margin-top: 15px !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+    background-color: #f1f5f9 !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 8px 12px !important;
+    text-align: left !important;
+    font-size: 9.5pt !important;
+    color: #1e293b !important;
+  }
+
+  /* Desaturate pictures to save colored ink cartridges */
+  img {
+    filter: grayscale(100%) !important;
+    border: 1px solid #94a3b8 !important;
+    print-color-adjust: exact;
+  }
+
+  /* Enforce clear page breaking on dynamic content cards */
+  .page-break,
+  section,
+  .bg-white.rounded-2xl {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Add signature spacing beneath cards */
+  .p-6, .p-5, .p-4 {
+    padding: 12px 0 !important;
+  }
+}
